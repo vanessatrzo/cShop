@@ -1,0 +1,811 @@
+<div class="row">
+	<div class="col-lg-12">
+		<ol class="breadcrumb">
+			<li><a href="#">Home</a></li>
+			<li class="active"><span>FooTables</span></li>
+		</ol>
+		
+		<h1>FooTables <small>Secondary headline</small></h1>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="main-box clearfix">
+			<header class="main-box-header clearfix">
+				<h2>Showcase of pagination, filtering, sorting and editing.</h2>
+
+				<div class="pagecallout pagecallout-info">
+					<h4>Notes</h4>
+					<ul>
+						<li>
+							The below example loads dynamically ten thousand (10000) rows from the server.
+						</li>
+						<li>
+							Using the <a href="http://fooplugins.github.io/FooTable/docs/examples/component/paging.html" target="_blank">paging component</a> drastically improves the performance of the plugin on large numbers of rows.
+						</li>
+						<li>
+							The <a href="http://fooplugins.github.io/FooTable/docs/examples/component/editing.html" target="_blank">editing component</a> requires you to create the modal and editor form that is displayed. Check out the individual component documentation or example for more details.
+						</li>
+						<li>
+							As the <a href="http://fooplugins.github.io/FooTable/docs/components/state.html" target="_blank">state component</a> has no UI try sorting a column, changing the page or applying a search filter and then refreshing the browser.
+						</li>
+					</ul>
+				</div>
+			</header>
+
+			<div class="main-box-body clearfix">
+				<!-- Table Markup -->
+				<table id="showcase-example-1" class="table" data-paging="true" data-filtering="true" data-sorting="true" data-editing="true" data-state="true" data-filter-dropdown-title="Search in:" data-filter-placeholder="Search..."></table>
+
+				<!-- Editing Modal Markup -->
+				<div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+					<style scoped>
+						/* provides a red astrix to denote required fields - this should be included in common stylesheet */
+						.form-group.required .control-label:after {
+							content:"*";
+							color:red;
+							margin-left: 4px;
+						}
+					</style>
+					<div class="modal-dialog" role="document">
+						<form class="modal-content form-horizontal" id="editor">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+								<h4 class="modal-title" id="editor-title">Add Row</h4>
+							</div>
+							<div class="modal-body">
+								<input type="number" id="id" name="id" class="hidden"/>
+								<div class="form-group required">
+									<label for="firstName" class="col-sm-3 control-label">First Name</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+									</div>
+								</div>
+								<div class="form-group required">
+									<label for="lastName" class="col-sm-3 control-label">Last Name</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="jobTitle" class="col-sm-3 control-label">Job Title</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Job Title">
+									</div>
+								</div>
+								<div class="form-group required">
+									<label for="startedOn" class="col-sm-3 control-label">Started On</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control datepicker" id="startedOn" name="startedOn" placeholder="Started On" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="dob" class="col-sm-3 control-label">Date of Birth</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control datepicker" id="dob" name="dob" placeholder="Date of Birth">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="status" class="col-sm-3 control-label">Status</label>
+									<div class="col-sm-9">
+										<select class="form-control" id="status" name="status">
+											<option value="Active">Active</option>
+											<option value="Disabled">Disabled</option>
+											<option value="Suspended">Suspended</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-primary">Save changes</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="main-box clearfix">
+			<header class="main-box-header clearfix">
+				<h2>Modal example</h2>
+
+				<div class="pagecallout pagecallout-info">
+					<h4>Notes</h4>
+					<ul>
+						<li>
+							This example makes use of Bootstraps' modal component.
+						</li>
+						<li>
+							Seeing as the modal is a lot smaller than the viewport and table uses the default breakpoints, the below example makes use of the useParentWidth option so the columns collapse accordingly.
+						</li>
+					</ul>
+				</div>
+			</header>
+
+			<div class="main-box-body clearfix">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+					Launch table in modal
+				</button>
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+							</div>
+							<div class="modal-body">
+								<table id="modal-example-1" class="table" data-paging="true" data-filtering="true" data-sorting="true"></table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="main-box clearfix">
+			<header class="main-box-header clearfix">
+				<h2 class="pull-left">Orders (try responsive for this table)</h2>
+			</header>
+			
+			<div class="main-box-body clearfix">
+				<table class="table footable toggle-circle-filled" data-paging="true" data-paging-size="6" data-sorting="true" data-filtering="true" data-filter-dropdown-title="Search in:" data-filter-placeholder="Search...">
+					<thead>
+						<tr>
+							<th>Order ID</th>
+							<th>Date</th>
+							<th data-breakpoints="xs">Customer</th>
+							<th data-breakpoints="xs sm" class="text-center">Status</th>
+							<th data-breakpoints="xs sm md" class="text-right">Price</th>
+							<th data-breakpoints="xs sm md" class="text-left">Type</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<a href="#">#8002</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Robert De Niro</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-success">Completed</span>
+							</td>
+							<td class="text-right">
+								&dollar; 825.50
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#5832</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">John Wayne</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-warning">On hold</span>
+							</td>
+							<td class="text-right">
+								&dollar; 923.93
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#2547</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Anthony Hopkins</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-primary">Pending</span>
+							</td>
+							<td class="text-right">
+								&dollar; 1.625.50
+							</td>
+							<td>
+								Tablet
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#9274</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Charles Chaplin</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-danger">Cancelled</span>
+							</td>
+							<td class="text-right">
+								&dollar; 35.34
+							</td>
+							<td>
+								Mobile
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#8463</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Gary Cooper</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-success">Completed</span>
+							</td>
+							<td class="text-right">
+								&dollar; 34.199.99
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#8002</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Robert De Niro</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-success">Completed</span>
+							</td>
+							<td class="text-right">
+								&dollar; 825.50
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#5832</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">John Wayne</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-warning">On hold</span>
+							</td>
+							<td class="text-right">
+								&dollar; 923.93
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#2547</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Anthony Hopkins</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-primary">Pending</span>
+							</td>
+							<td class="text-right">
+								&dollar; 1.625.50
+							</td>
+							<td>
+								Tablet
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#9274</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Charles Chaplin</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-danger">Cancelled</span>
+							</td>
+							<td class="text-right">
+								&dollar; 35.34
+							</td>
+							<td>
+								Mobile
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#8463</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Gary Cooper</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-success">Completed</span>
+							</td>
+							<td class="text-right">
+								&dollar; 34.199.99
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#8002</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Robert De Niro</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-success">Completed</span>
+							</td>
+							<td class="text-right">
+								&dollar; 825.50
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#5832</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">John Wayne</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-warning">On hold</span>
+							</td>
+							<td class="text-right">
+								&dollar; 923.93
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#2547</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Anthony Hopkins</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-primary">Pending</span>
+							</td>
+							<td class="text-right">
+								&dollar; 1.625.50
+							</td>
+							<td>
+								Tablet
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#9274</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Charles Chaplin</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-danger">Cancelled</span>
+							</td>
+							<td class="text-right">
+								&dollar; 35.34
+							</td>
+							<td>
+								Mobile
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#8463</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Gary Cooper</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-success">Completed</span>
+							</td>
+							<td class="text-right">
+								&dollar; 34.199.99
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#8002</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Robert De Niro</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-success">Completed</span>
+							</td>
+							<td class="text-right">
+								&dollar; 825.50
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#5832</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">John Wayne</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-warning">On hold</span>
+							</td>
+							<td class="text-right">
+								&dollar; 923.93
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#2547</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Anthony Hopkins</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-primary">Pending</span>
+							</td>
+							<td class="text-right">
+								&dollar; 1.625.50
+							</td>
+							<td>
+								Tablet
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#9274</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Charles Chaplin</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-danger">Cancelled</span>
+							</td>
+							<td class="text-right">
+								&dollar; 35.34
+							</td>
+							<td>
+								Mobile
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#8463</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Gary Cooper</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-success">Completed</span>
+							</td>
+							<td class="text-right">
+								&dollar; 34.199.99
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#8002</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Robert De Niro</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-success">Completed</span>
+							</td>
+							<td class="text-right">
+								&dollar; 825.50
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#5832</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">John Wayne</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-warning">On hold</span>
+							</td>
+							<td class="text-right">
+								&dollar; 923.93
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#2547</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Anthony Hopkins</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-primary">Pending</span>
+							</td>
+							<td class="text-right">
+								&dollar; 1.625.50
+							</td>
+							<td>
+								Tablet
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#9274</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Charles Chaplin</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-danger">Cancelled</span>
+							</td>
+							<td class="text-right">
+								&dollar; 35.34
+							</td>
+							<td>
+								Mobile
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">#8463</a>
+							</td>
+							<td>
+								2013/08/08
+							</td>
+							<td>
+								<a href="#">Gary Cooper</a>
+							</td>
+							<td class="text-center">
+								<span class="label label-success">Completed</span>
+							</td>
+							<td class="text-right">
+								&dollar; 34.199.99
+							</td>
+							<td>
+								Website
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<ul class="pagination pull-right hide-if-no-paging"></ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- this page specific inline scripts -->
+<script type="text/javascript">
+$(document).ready(function() {
+	//datepicker
+	$('.datepicker').datepicker({
+		format: 'yyyy-mm-dd',
+		autoclose: true
+	});
+
+	//footable
+	//custom dropdown filter
+	FooTable.MyFiltering = FooTable.Filtering.extend({
+		construct: function(instance){
+			this._super(instance);
+			this.statuses = ['Active','Disabled','Suspended'];
+			this.def = 'Any Status';
+			this.$status = null;
+		},
+		$create: function(){
+			this._super();
+			var self = this,
+				$form_grp = $('<div/>', {'class': 'form-group'})
+					.append($('<label/>', {'class': 'sr-only', text: 'Status'}))
+					.prependTo(self.$form);
+
+			self.$status = $('<select/>', { 'class': 'form-control' })
+				.on('change', {self: self}, self._onStatusDropdownChanged)
+				.append($('<option/>', {text: self.def}))
+				.appendTo($form_grp);
+
+			$.each(self.statuses, function(i, status){
+				self.$status.append($('<option/>').text(status));
+			});
+		},
+		_onStatusDropdownChanged: function(e){
+			var self = e.data.self,
+				selected = $(this).val();
+			if (selected !== self.def){
+				self.addFilter('status', selected, ['status']);
+			} else {
+				self.removeFilter('status');
+			}
+			self.filter();
+		},
+		draw: function(){
+			this._super();
+			var status = this.find('status');
+			if (status instanceof FooTable.Filter){
+				this.$status.val(status.query.val());
+			} else {
+				this.$status.val(this.def);
+			}
+		}
+	});
+
+	$('.footable').footable({
+		
+	});
+
+	var $modal = $('#editor-modal'),
+		$editor = $('#editor'),
+		$editorTitle = $('#editor-title'),
+		ft = FooTable.init('#showcase-example-1', {
+			columns: $.get("/components/footable/docs/content/columns.json"),
+			rows: $.get("/components/footable/docs/content/rows.json"),
+			editing: {
+				alwaysShow: true, 
+				addRow: function(){
+					$modal.removeData('row');
+					$editor[0].reset();
+					$editorTitle.text('Add a new row');
+					$modal.modal('show');
+				},
+				editRow: function(row){
+					var values = row.val();
+					$editor.find('#id').val(values.id);
+					$editor.find('#firstName').val(values.firstName);
+					$editor.find('#lastName').val(values.lastName);
+					$editor.find('#jobTitle').val(values.jobTitle);
+					$editor.find('#status').val(values.status);
+					$editor.find('#startedOn').val(values.started.format('YYYY-MM-DD'));
+					$editor.find('#dob').val(values.dob.format('YYYY-MM-DD'));
+					$modal.data('row', row);
+					$editorTitle.text('Edit row #' + values.id);
+					$modal.modal('show');
+				},
+				deleteRow: function(row){
+					if (confirm('Are you sure you want to delete the row?')){
+						row.delete();
+					}
+				}
+			},
+			components: {
+				filtering: FooTable.MyFiltering
+			}
+		}),
+		uid = 10001;
+
+	$editor.on('submit', function(e){
+		if (this.checkValidity && !this.checkValidity()) return;
+		e.preventDefault();
+		var row = $modal.data('row'),
+			values = {
+				id: $editor.find('#id').val(),
+				firstName: $editor.find('#firstName').val(),
+				lastName: $editor.find('#lastName').val(),
+				jobTitle: $editor.find('#jobTitle').val(),
+				started: moment($editor.find('#startedOn').val(), 'YYYY-MM-DD'),
+				dob: moment($editor.find('#dob').val(), 'YYYY-MM-DD'),
+				status: $editor.find('#status option:selected').val()
+			};
+
+		if (row instanceof FooTable.Row){
+			row.val(values);
+		} else {
+			values.id = uid++;
+			ft.rows.add(values);
+		}
+		$modal.modal('hide');
+	});
+
+	$('#modal-example-1').footable({
+		"useParentWidth": true,
+		"columns": $.get('/components/footable/docs/content/columns.json'),
+		"rows": $.get('/components/footable/docs/content/rows.json')
+	});
+});
+</script>
